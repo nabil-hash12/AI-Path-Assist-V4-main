@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Color tokens — Material 3 style role names, defined as "R G B" triplets
+   so Tailwind can apply them with opacity modifiers (bg-primary/10, etc.)
+   via rgb(var(--color-x) / <alpha-value>). Overridden per-theme below.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --color-surface: 251 251 251;
+  --color-surface-dim: 221 222 222;
+  --color-surface-bright: 251 251 251;
+  --color-surface-container-lowest: 255 255 255;
+  --color-surface-container-low: 245 245 245;
+  --color-surface-container: 239 240 240;
+  --color-surface-container-high: 232 232 232;
+  --color-surface-container-highest: 224 224 225;
+  --color-on-surface: 30 30 31;
+  --color-on-surface-variant: 71 74 82;
+  --color-inverse-surface: 50 51 52;
+  --color-inverse-on-surface: 242 242 242;
+  --color-outline: 120 124 135;
+  --color-outline-variant: 210 211 214;
+  --color-surface-tint: 0 95 204;
+  --color-primary: 0 95 204;
+  --color-on-primary: 255 255 255;
+  --color-primary-container: 216 226 255;
+  --color-on-primary-container: 0 26 66;
+  --color-inverse-primary: 173 198 255;
+  --color-secondary: 8 155 110;
+  --color-on-secondary: 255 255 255;
+  --color-secondary-container: 111 251 190;
+  --color-on-secondary-container: 0 33 19;
+  --color-tertiary: 203 14 11;
+  --color-on-tertiary: 255 255 255;
+  --color-tertiary-container: 255 218 215;
+  --color-on-tertiary-container: 65 0 4;
+  --color-error: 189 15 27;
+  --color-on-error: 255 255 255;
+  --color-error-container: 245 224 226;
+  --color-on-error-container: 87 15 20;
+  --color-primary-fixed: 216 226 255;
+  --color-primary-fixed-dim: 173 198 255;
+  --color-on-primary-fixed: 0 26 66;
+  --color-on-primary-fixed-variant: 0 67 149;
+  --color-secondary-fixed: 111 251 190;
+  --color-secondary-fixed-dim: 78 222 163;
+  --color-on-secondary-fixed: 0 33 19;
+  --color-on-secondary-fixed-variant: 0 82 54;
+  --color-tertiary-fixed: 255 218 215;
+  --color-tertiary-fixed-dim: 255 179 173;
+  --color-on-tertiary-fixed: 65 0 4;
+  --color-on-tertiary-fixed-variant: 147 0 19;
+  --color-background: 251 251 251;
+  --color-on-background: 30 30 31;
+  --color-surface-variant: 228 229 231;
+
+  /* Non-role helper values used by a few raw CSS rules below */
+  --glass-panel-bg: 255 255 255;
+  --glass-panel-bg-alpha: 0.6;
+  --glass-panel-border: 210 211 214;
+  --scrollbar-thumb: 210 211 214;
+  --scrollbar-thumb-hover: 190 191 195;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-surface: 17 19 23;
+  --color-surface-dim: 17 19 23;
+  --color-surface-bright: 55 57 62;
+  --color-surface-container-lowest: 12 14 18;
+  --color-surface-container-low: 26 28 32;
+  --color-surface-container: 30 32 36;
+  --color-surface-container-high: 40 42 46;
+  --color-surface-container-highest: 51 53 57;
+  --color-on-surface: 226 226 232;
+  --color-on-surface-variant: 194 198 214;
+  --color-inverse-surface: 226 226 232;
+  --color-inverse-on-surface: 47 48 53;
+  --color-outline: 140 144 159;
+  --color-outline-variant: 66 71 84;
+  --color-surface-tint: 173 198 255;
+  --color-primary: 173 198 255;
+  --color-on-primary: 0 46 106;
+  --color-primary-container: 77 142 255;
+  --color-on-primary-container: 0 40 93;
+  --color-inverse-primary: 0 90 194;
+  --color-secondary: 78 222 163;
+  --color-on-secondary: 0 56 36;
+  --color-secondary-container: 0 165 114;
+  --color-on-secondary-container: 0 49 31;
+  --color-tertiary: 255 179 173;
+  --color-on-tertiary: 104 0 10;
+  --color-tertiary-container: 255 84 81;
+  --color-on-tertiary-container: 92 0 8;
+  --color-error: 255 180 171;
+  --color-on-error: 105 0 5;
+  --color-error-container: 147 0 10;
+  --color-on-error-container: 255 218 214;
+  --color-primary-fixed: 216 226 255;
+  --color-primary-fixed-dim: 173 198 255;
+  --color-on-primary-fixed: 0 26 66;
+  --color-on-primary-fixed-variant: 0 67 149;
+  --color-secondary-fixed: 111 251 190;
+  --color-secondary-fixed-dim: 78 222 163;
+  --color-on-secondary-fixed: 0 33 19;
+  --color-on-secondary-fixed-variant: 0 82 54;
+  --color-tertiary-fixed: 255 218 215;
+  --color-tertiary-fixed-dim: 255 179 173;
+  --color-on-tertiary-fixed: 65 0 4;
+  --color-on-tertiary-fixed-variant: 147 0 19;
+  --color-background: 17 19 23;
+  --color-on-background: 226 226 232;
+  --color-surface-variant: 51 53 57;
+
+  --glass-panel-bg: 30 32 36;
+  --glass-panel-bg-alpha: 0.6;
+  --glass-panel-border: 66 71 84;
+  --scrollbar-thumb: 51 53 57;
+  --scrollbar-thumb-hover: 66 71 84;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  /* Smooth color transition when switching themes, without animating
+     everything else on the page. */
+  transition: background-color 0.15s ease;
+}
+
+body {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-on-background));
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Shared "glass" panel used across the Analysis, Queue, and Auth screens */
+.glass-panel {
+  background: rgb(var(--glass-panel-bg) / var(--glass-panel-bg-alpha));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgb(var(--glass-panel-border) / 0.5);
+}
+
+/* Range slider used for Grad-CAM opacity / spatial resolution controls */
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: rgb(var(--color-outline-variant));
+  outline: none;
+  border-radius: 9999px;
+}
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(var(--color-primary));
+  cursor: pointer;
+  border: 2px solid rgb(var(--color-surface));
+}
+.range-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(var(--color-primary));
+  cursor: pointer;
+  border: 2px solid rgb(var(--color-surface));
+}
+
+/* Slim-track toggle switch */
+.toggle-checkbox {
+  right: 4px;
+}
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: rgb(var(--color-primary));
+  transform: translateX(100%);
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: rgb(var(--color-primary));
+}
+
+/* Animated stripe for active processing progress bars */
+.progress-bar-stripe {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-animation 1s linear infinite;
+}
+@keyframes progress-animation {
+  from { background-position: 1rem 0; }
+  to { background-position: 0 0; }
+}
+
+.input-outline:focus {
+  border-color: rgb(var(--color-primary));
+  outline: none;
+  box-shadow: 0 0 0 1px rgb(var(--color-primary));
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(var(--scrollbar-thumb)); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--scrollbar-thumb-hover)); }
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 24px;
+  line-height: 1;
+  vertical-align: middle;
+}
